@@ -5,16 +5,15 @@ import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
+const publishedTeamMembers = (await getCollection("team", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
-});
+})).sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
 <Layout title="About">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">About</Fragment>
+      <Fragment slot="title">Team</Fragment>
       <Fragment slot="desc">Kami untuk #IndonesiaBebasSampah.</Fragment>
     </Sectionhead>
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
@@ -23,7 +22,7 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
           <div class="group">
             <div class="w-full aspect-square">
               <Picture
-                src={teamMemberEntry.data.avatar.src}
+                src={`/src/assets/team/${teamMemberEntry.data.avatar.src}`}
                 alt={teamMemberEntry.data.avatar.alt}
                 sizes="(max-width: 800px) 100vw, 400px"
                 width={400}
