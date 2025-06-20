@@ -1,6 +1,7 @@
 ---
 import Link from "@/components/ui/link.astro";
 import { Icon } from "astro-icon/components";
+import kepulIntro from "@/assets/intro.mp4";
 ---
 
 <main class="relative w-full min-h-[60vh]">
@@ -12,7 +13,7 @@ import { Icon } from "astro-icon/components";
       loop
       muted
       playsinline>
-      <source src="https://kepul.id/vid/intro.mp4" type="video/mp4" />
+      <source src={kepulIntro} type="video/mp4" />
     </video>
     <!-- Semi-transparent overlay -->
     <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -31,8 +32,7 @@ import { Icon } from "astro-icon/components";
           </p>
           <div class="mt-6 flex flex-col sm:flex-row gap-3">
             <Link
-              href="#"
-              href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
+              href="https://play.google.com/store/apps/details?id=app.kepul.id&hl=id"
               target="_blank"
               class="flex gap-1 items-center justify-center"
               rel="noopener">
