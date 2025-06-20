@@ -1,18 +1,21 @@
 ---
-// @ts-ignore
-import { Icon } from "astro-icon/components";
+const icons = [
+  "https://static.wikia.nocookie.net/logopedia/images/4/42/Narasi_%282018%29.svg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/IDN_Media.svg/800px-IDN_Media.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Kompas.svg/800px-Kompas.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Jawa_Pos.png/800px-Jawa_Pos.png"
+];
 ---
 
 <div class="mt-24">
-  <h2 class="text-center text-slate-500">Works with your technologies</h2>
+  <h2 class="text-center text-slate-500">Telah diliput oleh</h2>
   <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 flex-wrap">
-
-    <Icon class="size-8 md:size-12" name="simple-icons:react" />
-    <Icon class="size-8 md:size-12" name="simple-icons:svelte" />
-    <Icon class="size-8 md:size-12" name="simple-icons:astro" />
-    <Icon class="size-8 md:size-16" name="simple-icons:tailwindcss" />
-    <Icon class="size-8 md:size-16" name="simple-icons:alpinedotjs" />
-    <Icon class="size-8 md:size-12" name="simple-icons:vercel" />
-
+    {icons.map((icon) => (
+      <img 
+        src={icon} 
+        alt="Media Logo" 
+        class="h-4 md:h-6 w-auto object-contain"
+      />
+    ))}
   </div>
 </div>
