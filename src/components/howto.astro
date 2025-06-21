@@ -1,0 +1,41 @@
+---
+// @ts-ignore
+import StepCard from "@/components/step.astro";
+
+const steps = [
+  {
+    name: "Pertama",
+    step: "Pilah-memilah",
+    desc: "Sebelum kamu menjual sampah daur ulang, pastikan sampahnya sudah dipilah, ya!",
+    img: "https://upload.wikimedia.org/wikipedia/commons/9/99/Black_square.jpg",
+  },
+  {
+    name: "Kedua",
+    step: "Unggah Sampah",
+    desc: "Buka aplikasi kepul, foto dan isi informasi sampah daur ulang yang kamu jual.",
+    img: "https://upload.wikimedia.org/wikipedia/commons/9/99/Black_square.jpg",
+  },
+  {
+    name: "Ketiga",
+    step: "Dijemput driver",
+    desc: "Setelah kamu unggah di aplikasi Kepul, Driver kami siap menjemput dirumah.",
+    img: "https://upload.wikimedia.org/wikipedia/commons/9/99/Black_square.jpg",
+  },
+  {
+    name: "Keempat",
+    step: "Peroleh Uangnya",
+    desc: "Setelah proses transaksi berhasil, uang akan kami transfer ke rekening kamu.",
+    img: "https://upload.wikimedia.org/wikipedia/commons/9/99/Black_square.jpg",
+  },
+];
+---
+
+<div class="mt-16 md:mt-0 pt-12">
+    <h2 class="text-4xl lg:text-4xl font-bold lg:tracking-tight">Jual Sampah Lebih Mudah!</h2>
+    <p class="text-slate-500 mt-2 leading-relaxed">Hanya dengan empat langkah, kamu dapat meraih keuntungan menjual sampah daur ulang.</p>
+</div>
+  
+<div
+    class="grid grid-cols-2 md:grid-cols-4 gap-10 mx-auto mt-12">
+    {steps.map((item) => <StepCard step={item} />)}
+</div>
