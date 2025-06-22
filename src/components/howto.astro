@@ -7,25 +7,25 @@ const steps = [
     name: "Pertama",
     step: "Pilah-memilah",
     desc: "Sebelum kamu menjual sampah daur ulang, pastikan sampahnya sudah dipilah, ya!",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/99/Black_square.jpg",
+    img: "/steps/kepul-il-1.png",
   },
   {
     name: "Kedua",
     step: "Unggah Sampah",
     desc: "Buka aplikasi kepul, foto dan isi informasi sampah daur ulang yang kamu jual.",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/99/Black_square.jpg",
+    img: "/steps/kepul-il-2.png",
   },
   {
     name: "Ketiga",
     step: "Dijemput driver",
     desc: "Setelah kamu unggah di aplikasi Kepul, Driver kami siap menjemput dirumah.",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/99/Black_square.jpg",
+    img: "/steps/kepul-il-3.png",
   },
   {
     name: "Keempat",
     step: "Peroleh Uangnya",
     desc: "Setelah proses transaksi berhasil, uang akan kami transfer ke rekening kamu.",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/99/Black_square.jpg",
+    img: "/steps/kepul-il-4.png",
   },
 ];
 ---
@@ -36,6 +36,6 @@ const steps = [
 </div>
   
 <div
-    class="grid grid-cols-2 md:grid-cols-4 gap-10 mx-auto mt-12">
+    class="grid grid-cols-2 md:grid-cols-4 gap-6 mx-auto mt-12">
     {steps.map((item) => <StepCard step={item} />)}
 </div>
