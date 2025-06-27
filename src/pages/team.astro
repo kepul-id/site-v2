@@ -10,7 +10,7 @@ const publishedTeamMembers = (await getCollection("team", ({ data }) => {
 })).sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
-<Layout title="About">
+<Layout title="Team">
   <Container>
     <Sectionhead>
       <Fragment slot="title">Team</Fragment>
