@@ -112,3 +112,5 @@ The bottom line? Gemini Flash AI has made selling recyclables through Kepul much
 With #KepulPintar, what used to be tedious is now straightforward. Our system recognizes your recyclables, calculates environmental impact, and provides instant pricing!
 
 We believe this integration represents a significant step forward for waste management platforms and shows how AI can effectively address environmental challenges while making the process more user-friendly.
+
+#### This feature will be available in version 2.3.0 of the app, which has been submitted to the App Console. Stay tuned for updates! ✨
