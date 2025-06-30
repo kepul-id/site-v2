@@ -1,0 +1,71 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+import PricingCard from "@/components/pricing.astro";
+import { useTranslations } from "@/i18n/utils";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "id" } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+
+const pricing = [
+  {
+    name: t("pricing.personal_name"),
+    price: "Free",
+    popular: false,
+    features: t("pricing.personal_features"),
+    button: {
+      text: t("pricing.get_started"),
+      link: `/${lang}/`,
+    },
+  },
+  {
+    name: t("pricing.startup_name"),
+    price: {
+      monthly: "$19",
+      annual: "$16",
+      discount: "10%",
+      original: "$24",
+    },
+    popular: true,
+    features: t("pricing.startup_features"),
+    button: {
+      text: t("pricing.get_started"),
+      link: "#",
+    },
+  },
+  {
+    name: t("pricing.enterprise_name"),
+    price: "Custom",
+    popular: false,
+    features: t("pricing.enterprise_features"),
+    button: {
+      text: t("pricing.contact_us"),
+      link: `/${lang}/contact`,
+    },
+  },
+];
+---
+
+<Layout title={t("pricing.title")} lang={lang}>
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">{t("pricing.title")}</Fragment>
+      <Fragment slot="desc">
+        {t("pricing.description")}
+      </Fragment>
+    </Sectionhead>
+
+    <div
+      class="grid md:grid-cols-3 gap-10 mx-auto max-w-(--breakpoint-lg) mt-12">
+      {pricing.map((item) => <PricingCard plan={item} lang={lang} />)}
+    </div>
+  </Container>
+</Layout>

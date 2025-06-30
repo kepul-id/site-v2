@@ -1,42 +1,44 @@
 ---
 // @ts-ignore
 import { Icon } from "astro-icon/components";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const features = [
   {
-    title: "Jual Sampah",
-    description:
-      "Jual sampah daur ulang (non-B3), daftarkan sampah anda dan dapatkan uang tunai dan jaga lingkungan.",
+    title: t("features.sell_trash_title"),
+    description: t("features.sell_trash_description"),
     icon: "bx:bxs-trash",
   },
   {
-    title: "Sedekah Sampah",
-    description:
-      "Donasikan sampah daur ulang untuk sosial, sumbangkan sampah anda untuk program amal yang terpercaya.",
+    title: t("features.charity_trash_title"),
+    description: t("features.charity_trash_description"),
     icon: "bx:bxs-donate-heart",
   },
   {
-    title: "Kepul Point",
-    description:
-      "Antar dan jual sampah daur ulang secara mandiri di Kepul Point terdekat anda.",
+    title: t("features.kepul_point_title"),
+    description: t("features.kepul_point_description"),
     icon: "bx:bxs-map",
   },
   {
-    title: "Bisnis & Event",
-    description:
-      "Kelola dan atur penjemputan sampah daur ulang dari perusahaan atau acara anda melalui Kepul.",
+    title: t("features.business_event_title"),
+    description: t("features.business_event_description"),
     icon: "bx:bxs-calendar-event",
   },
   {
-    title: "Sekolah Bebas Sampah",
-    description:
-      "Memberdayakan siswa sekolah untuk mendapatkan uang kas atau tabungan tambahan dengan sampah daur ulang.",
+    title: t("features.zero_waste_school_title"),
+    description: t("features.zero_waste_school_description"),
     icon: "bx:bxs-school",
   },
   {
-    title: "Sembako Sampah",
-    description:
-      "Membantu masyarakat mendapatkan berbagai kebutuhan dengan harga lebih murah dengan potongan harga jual sampah daur ulang.",
+    title: t("features.staple_food_trash_title"),
+    description: t("features.staple_food_trash_description"),
     icon: "bx:bxs-store",
   },
 ];
@@ -44,7 +46,7 @@ const features = [
 
 <div class="mt-16 md:mt-0 pt-12">
   <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Kenapa harus di Kepul.id?
+    {t("features.title")}
   </h2>
 </div>
 

@@ -1,0 +1,123 @@
+{
+  "catalog": {
+    "title": "Katalog",
+    "description": "Daftar harga produk terkini.",
+    "no_products": "Belum ada produk."
+  },
+  "hero": {
+    "title": "Jual Sampah Jadi Mudah",
+    "description": "Kami hadir untuk mendaur ulang limbah domestik (Non B3) untuk mewujudkan Indonesia yang lebih baik.",
+    "download_app": "Unduh Aplikasi"
+  },
+  "features": {
+    "title": "Kenapa harus di Kepul.id?",
+    "sell_trash_title": "Jual Sampah",
+    "sell_trash_description": "Jual sampah daur ulang (non-B3), daftarkan sampah anda dan dapatkan uang tunai dan jaga lingkungan.",
+    "charity_trash_title": "Sedekah Sampah",
+    "charity_trash_description": "Donasikan sampah daur ulang untuk sosial, sumbangkan sampah anda untuk program amal yang terpercaya.",
+    "kepul_point_title": "Kepul Point",
+    "kepul_point_description": "Antar dan jual sampah daur ulang secara mandiri di Kepul Point terdekat anda.",
+    "business_event_title": "Bisnis & Event",
+    "business_event_description": "Kelola dan atur penjemputan sampah daur ulang dari perusahaan atau acara anda melalui Kepul.",
+    "zero_waste_school_title": "Sekolah Bebas Sampah",
+    "zero_waste_school_description": "Memberdayakan siswa sekolah untuk mendapatkan uang kas atau tabungan tambahan dengan sampah daur ulang.",
+    "staple_food_trash_title": "Sembako Sampah",
+    "staple_food_trash_description": "Membantu masyarakat mendapatkan berbagai kebutuhan dengan harga lebih murah dengan potongan harga jual sampah daur ulang."
+  },
+  "howto": {
+    "title": "Jual Sampah Lebih Mudah!",
+    "description": "Hanya dengan empat langkah, kamu dapat meraih keuntungan menjual sampah daur ulang.",
+    "step_one_name": "Pertama",
+    "step_one_step": "Pilah-memilah",
+    "step_one_desc": "Sebelum kamu menjual sampah daur ulang, pastikan sampahnya sudah dipilah, ya!",
+    "step_two_name": "Kedua",
+    "step_two_step": "Unggah Sampah",
+    "step_two_desc": "Buka aplikasi kepul, foto dan isi informasi sampah daur ulang yang kamu jual.",
+    "step_three_name": "Ketiga",
+    "step_three_step": "Dijemput driver",
+    "step_three_desc": "Setelah kamu unggah di aplikasi Kepul, Driver kami siap menjemput dirumah.",
+    "step_four_name": "Keempat",
+    "step_four_step": "Peroleh Uangnya",
+    "step_four_desc": "Setelah proses transaksi berhasil, uang akan kami transfer ke rekening kamu."
+  },
+  "cta": {
+    "title": "Siap untuk <u>menyelamatkan Lingkungan</u>?",
+    "description": "Download sekarang, dan jual sampah daur ulangmu!",
+    "button": "Unduh Aplikasi"
+  },
+  "footer": {
+    "copyright": "Hak Cipta © {year} kepul.id. Semua hak dilindungi undang-undang.",
+    "made_by": "Dibuat oleh"
+  },
+  "navbar": {
+    "catalog": "Katalog",
+    "team": "Tim",
+    "blog": "Blog",
+    "contact": "Kontak",
+    "try_app": "Coba Aplikasi"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Baca berita dan tulisan terkini dari kami.",
+    "no_posts": "Belum ada tulisan.",
+    "back_to_blog": "← Kembali ke Blog"
+  },
+  "contact": {
+    "title": "Kontak",
+    "description": "Pusat informasi dan bantuan.",
+    "company_name": "PT Indonesia Bebas Sampah",
+    "contact_message": "Silahkan isi form berikut jika ingin menghubungi kami, kami sangat senang membantu.",
+    "full_name": "Nama Lengkap",
+    "email_address": "Alamat Email",
+    "your_message": "Pesan Anda",
+    "send_message": "Kirim Pesan",
+    "feedback_name": "Mohon berikan nama lengkap Anda.",
+    "feedback_email": "Mohon berikan alamat email Anda.",
+    "feedback_valid_email": "Mohon berikan alamat email yang valid.",
+    "feedback_message": "Mohon masukkan pesan Anda."
+  },
+  "pricing": {
+    "title": "Harga",
+    "description": "Harga sederhana & dapat diprediksi. Tanpa kejutan.",
+    "personal_name": "Personal",
+    "personal_features": [
+      "Gratis seumur hidup",
+      "Hingga 3 pengguna",
+      "Halaman tak terbatas",
+      "Subdomain Astro",
+      "Integrasi dasar",
+      "Dukungan Komunitas"
+    ],
+    "startup_name": "Startup",
+    "startup_features": [
+      "Semua Fitur Gratis",
+      "Hingga 20 pengguna",
+      "20 Domain Kustom",
+      "Kolaborator Tak Terbatas",
+      "Integrasi Lanjutan",
+      "Dukungan Prioritas"
+    ],
+    "enterprise_name": "Perusahaan",
+    "enterprise_features": [
+      "Semua Fitur Pro",
+      "Domain Kustom Tak Terbatas",
+      "SLA Uptime 99.99%",
+      "Integrasi SAML & SSO",
+      "Manajer Akun Khusus",
+      "Dukungan Telepon 24/7"
+    ],
+    "get_started": "Mulai",
+    "contact_us": "Hubungi kami"
+  },
+  "team": {
+    "title": "Tim",
+    "description": "Kami untuk #IndonesiaBebasSampah."
+  },
+  "404": {
+    "title": "404 Tidak Ditemukan",
+    "message": "Halaman tidak ditemukan."
+  },
+  "layout": {
+    "title_suffix": "Kepul - Jual Sampah Jadi Mudah"
+  }
+}

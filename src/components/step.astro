@@ -1,7 +1,14 @@
 ---
 import { Picture } from "astro:assets";
+import { useTranslations } from "@/i18n/utils";
 
-const { step } = Astro.props;
+interface Props {
+  step: { name: string; step: string; desc: string; img: string };
+  lang: string;
+}
+
+const { step, lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <div>

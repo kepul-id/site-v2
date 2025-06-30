@@ -2,6 +2,16 @@
 import Link from "@/components/ui/link.astro";
 import { Icon } from "astro-icon/components";
 import kepulIntro from "@/assets/intro.mp4";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+console.log("hero.astro - lang:", lang);
+console.log("hero.astro - hero.title:", t("hero.title"));
 ---
 
 <main class="relative w-full min-h-[60vh]">
@@ -25,10 +35,10 @@ import kepulIntro from "@/assets/intro.mp4";
       <div class="grid lg:grid-cols-2 place-items-center gap-8">
         <div class="text-white order-2 lg:order-1">
           <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-            Jual Sampah Jadi Mudah
+            {t("hero.title")}
           </h1>
           <p class="text-lg mt-4 text-white/80 max-w-xl">
-            Kami hadir untuk <b>mendaur ulang</b> limbah domestik (Non B3) untuk mewujudkan Indonesia yang lebih baik.
+            {t("hero.description")}
           </p>
           <div class="mt-6 flex flex-col sm:flex-row gap-3">
             <Link
@@ -38,7 +48,7 @@ import kepulIntro from "@/assets/intro.mp4";
               rel="noopener">
               <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
 
-              Download App
+              {t("hero.download_app")}
             </Link>
           </div>
         </div>

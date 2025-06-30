@@ -1,8 +1,15 @@
 ---
 import { Tick } from "@/components/ui/icons";
 import Link from "@/components/ui/link.astro";
+import { useTranslations } from "@/i18n/utils";
 
-const { plan } = Astro.props;
+interface Props {
+  plan: any;
+  lang: string;
+}
+
+const { plan, lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <div>
@@ -38,7 +45,7 @@ const { plan } = Astro.props;
         href={plan.button.link || "#"}
         block
         style={plan.popular ? "primary" : "outline"}>
-        {plan.button.text || "Get Started"}
+        {plan.button.text || t("pricing.get_started")}
       </Link>
     </div>
   </div>

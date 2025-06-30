@@ -2,11 +2,18 @@
 import Container from "@/components/container.astro";
 import { getFormattedDate } from "@/utils/all";
 import Layout from "./Layout.astro";
+import { useTranslations } from "@/i18n/utils";
 
-const { frontmatter } = Astro.props;
+interface Props {
+  frontmatter: any;
+  lang: string;
+}
+
+const { frontmatter, lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} lang={lang}>
   <Container>
     <div class="mx-auto max-w-[735px] mt-14">
       <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
@@ -40,9 +47,9 @@ const { frontmatter } = Astro.props;
     </div>
     <div class="text-center mt-8">
       <a
-        href="/blog"
+        href={`/${lang}/blog`}
         class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-        >← Back to Blog</a
+        >{t("blog.back_to_blog")}</a
       >
     </div>
   </Container>

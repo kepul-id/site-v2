@@ -4,20 +4,31 @@ import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
+import { useTranslations } from "@/i18n/utils";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "id" } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
 ---
 
-<Layout title="Contact">
+<Layout title={t("contact.title")} lang={lang}>
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">Pusat informasi dan bantuan.</Fragment>
+      <Fragment slot="title">{t("contact.title")}</Fragment>
+      <Fragment slot="desc">{t("contact.description")}</Fragment>
     </Sectionhead>
 
     <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
       <div>
-        <h2 class="font-medium text-2xl text-gray-800">PT Indonesia Bebas Sampah</h2>
+        <h2 class="font-medium text-2xl text-gray-800">{t("contact.company_name")}</h2>
         <p class="text-lg leading-relaxed text-slate-500 mt-3">
-          Silahkan isi form berikut jika ingin menghubungi kami, kami sangat senang membantu.
+          {t("contact.contact_message")}
         </p>
         <div class="mt-5">
           <div class="flex items-center mt-2 space-x-2 text-gray-600">
@@ -32,7 +43,7 @@ import { Icon } from "astro-icon/components";
         </div>
       </div>
       <div>
-        <Contactform />
+        <Contactform lang={lang} />
       </div>
     </div>
   </Container>

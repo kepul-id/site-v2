@@ -4,37 +4,61 @@ import { Picture } from "astro:assets";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import kepulImage from "@/assets/kepul-logo.png";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const menuitems = [
   {
-    title: "Catalog",
-    path: "/catalog",
+    title: t("navbar.catalog"),
+    path: lang === 'id' ? '/catalog' : `/${lang}/catalog`,
   },
   {
-    title: "Team",
-    path: "/team",
+    title: t("navbar.team"),
+    path: lang === 'id' ? '/team' : `/${lang}/team`,
   },
   {
-    title: "Blog",
-    path: "/blog",
+    title: t("navbar.blog"),
+    path: lang === 'id' ? '/blog' : `/${lang}/blog`,
   },
   {
-    title: "Contact",
-    path: "/contact",
+    title: t("navbar.contact"),
+    path: lang === 'id' ? '/contact' : `/${lang}/contact`,
   },
   // {
-  //   title: "Try App",
+  //   title: t("navbar.try_app"),
   //   badge: true,
   //   path: "https://app.kepul.id/beta",
   // },
 ];
+
+const getLocalizedPath = (targetLang: string) => {
+  const currentPathname = Astro.url.pathname;
+  const defaultLocale = "id"; // As defined in astro.config.mjs
+
+  let pathWithoutLang = currentPathname;
+  if (currentPathname.startsWith(`/${lang}`)) {
+    pathWithoutLang = currentPathname.substring(`/${lang}`.length);
+  }
+
+  if (targetLang === defaultLocale) {
+    return pathWithoutLang || "/"; // Return root path for default locale
+  } else {
+    return `/${targetLang}${pathWithoutLang}`;
+  }
+};
 ---
 
 <Container>
   <header class="flex flex-col lg:flex-row justify-between items-center my-5">
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
-        <a href="/" class="w-8 md:w-12">
+        <a href={lang === 'id' ? '/' : `/${lang}/`} class="w-8 md:w-12">
           <Picture
             src={kepulImage}
             alt="Kepul"
@@ -45,7 +69,7 @@ const menuitems = [
             class="w-full h-auto"
           />
         </a>
-        <a href="/">
+        <a href={lang === 'id' ? '/' : `/${lang}/`}>
           <span class="font-bold text-sky-500 ml-1 px-2 py-0.5 text-[20px]">Kepul</span>
         </a>
         <div class="block lg:hidden">
@@ -83,6 +107,10 @@ const menuitems = [
             ))
           }
         </ul>
+        <div class="flex gap-2 ml-4">
+          <a href={getLocalizedPath('en')} class:list={["px-3 py-2 rounded-md", lang === 'en' ? "bg-blue-500 text-white" : "text-gray-600 hover:text-gray-900"]}>EN</a>
+          <a href={getLocalizedPath('id')} class:list={["px-3 py-2 rounded-md", lang === 'id' ? "bg-blue-500 text-white" : "text-gray-600 hover:text-gray-900"]}>ID</a>
+        </div>
       </MenuItems>
     </Astronav>
   </header>

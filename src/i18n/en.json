@@ -1,0 +1,123 @@
+{
+  "catalog": {
+    "title": "Catalog",
+    "description": "Current product price list.",
+    "no_products": "No products available."
+  },
+  "hero": {
+    "title": "Selling Trash Made Easy",
+    "description": "We are here to recycle domestic waste (Non-B3) to create a better Indonesia.",
+    "download_app": "Download App"
+  },
+  "features": {
+    "title": "Why Kepul.id?",
+    "sell_trash_title": "Sell Trash",
+    "sell_trash_description": "Sell recyclable waste (non-B3), register your waste and get cash and protect the environment.",
+    "charity_trash_title": "Trash Charity",
+    "charity_trash_description": "Donate recyclable waste for social purposes, contribute your waste to trusted charity programs.",
+    "kepul_point_title": "Kepul Point",
+    "kepul_point_description": "Deliver and sell recyclable waste independently at your nearest Kepul Point.",
+    "business_event_title": "Business & Event",
+    "business_event_description": "Manage and arrange recyclable waste collection from your company or event through Kepul.",
+    "zero_waste_school_title": "Zero Waste School",
+    "zero_waste_school_description": "Empowering school students to earn extra cash or savings with recyclable waste.",
+    "staple_food_trash_title": "Staple Food for Trash",
+    "staple_food_trash_description": "Helping people get various necessities at lower prices with discounts from selling recyclable waste."
+  },
+  "howto": {
+    "title": "Selling Trash Made Easier!",
+    "description": "In just four steps, you can profit from selling recyclable waste.",
+    "step_one_name": "First",
+    "step_one_step": "Pilah-memilah",
+    "step_one_desc": "Before you sell recyclable waste, make sure it's sorted!",
+    "step_two_name": "Second",
+    "step_two_step": "Unggah Sampah",
+    "step_two_desc": "Open the Kepul app, take a photo and fill in the information about the recyclable waste you're selling.",
+    "step_three_name": "Third",
+    "step_three_step": "Dijemput driver",
+    "step_three_desc": "After you upload it to the Kepul app, our driver is ready to pick it up at your home.",
+    "step_four_name": "Fourth",
+    "step_four_step": "Peroleh Uangnya",
+    "step_four_desc": "After the transaction is successful, we will transfer the money to your account."
+  },
+  "cta": {
+    "title": "Ready to <u>save the Environment</u>?",
+    "description": "Download now, and sell your recyclable waste!",
+    "button": "Download App"
+  },
+  "footer": {
+    "copyright": "Copyright © {year} kepul.id. All rights reserved.",
+    "made_by": "Made by"
+  },
+  "navbar": {
+    "catalog": "Catalog",
+    "team": "Team",
+    "blog": "Blog",
+    "contact": "Contact",
+    "try_app": "Try App"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Read the latest news and articles from us.",
+    "no_posts": "No posts yet.",
+    "back_to_blog": "← Back to Blog"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Information and help center.",
+    "company_name": "PT Indonesia Bebas Sampah",
+    "contact_message": "Please fill out the form below if you want to contact us, we are happy to help.",
+    "full_name": "Full Name",
+    "email_address": "Email Address",
+    "your_message": "Your Message",
+    "send_message": "Send Message",
+    "feedback_name": "Please provide your full name.",
+    "feedback_email": "Please provide your email address.",
+    "feedback_valid_email": "Please provide a valid email address.",
+    "feedback_message": "Please enter your message."
+  },
+  "pricing": {
+    "title": "Pricing",
+    "description": "Simple & Predictable pricing. No Surprises.",
+    "personal_name": "Personal",
+    "personal_features": [
+      "Lifetime free",
+      "Up to 3 users",
+      "Unlimited Pages",
+      "Astro Sub domain",
+      "Basic Integrations",
+      "Community Support"
+    ],
+    "startup_name": "Startup",
+    "startup_features": [
+      "All Free Features",
+      "Up to 20 users",
+      "20 Custom domains",
+      "Unlimited Collaborators",
+      "Advanced Integrations",
+      "Priority Support"
+    ],
+    "enterprise_name": "Enterprise",
+    "enterprise_features": [
+      "All Pro Features",
+      "Unlimited Custom domains",
+      "99.99% Uptime SLA",
+      "SAML & SSO Integration",
+      "Dedicated Account Manager",
+      "24/7 Phone Support"
+    ],
+    "get_started": "Get Started",
+    "contact_us": "Contact us"
+  },
+  "team": {
+    "title": "Team",
+    "description": "We are for #IndonesiaBebasSampah."
+  },
+  "404": {
+    "title": "404 Not Found",
+    "message": "Page not found."
+  },
+  "layout": {
+    "title_suffix": "Kepul - Selling Trash Made Easy"
+  }
+}

@@ -1,17 +1,24 @@
 ---
 import Link from "./ui/link.astro";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <div class="bg-gradient-to-r from-zinc-800 to-zinc-900 p-8 md:px-20 md:py-20 mt-20 mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center relative overflow-hidden">
   <div class="relative z-10">
-    <h2 class="text-white text-4xl md:text-6xl tracking-tight">
-      Siap untuk <u>menyelamatkan Lingkungan</u>?
+    <h2 class="text-white text-4xl md:text-6xl tracking-tight" set:html={t("cta.title")}>
     </h2>
     <p class="text-slate-100 mt-4 text-lg md:text-xl">
-      Download sekarang, dan jual sampah daur ulangmu!
+      {t("cta.description")}
     </p>
     <div class="mt-5">
-      <Link href="https://play.google.com/store/apps/details?id=app.kepul.id&hl=id" style="inverted">Download App</Link>
+      <Link href="https://play.google.com/store/apps/details?id=app.kepul.id&hl=id" style="inverted">{t("cta.button")}</Link>
     </div>
   </div>
   <div class="absolute bottom-0 right-0 w-full h-full bg-[url('/src/assets/bg-footer.png')] bg-no-repeat bg-right-bottom bg-contain opacity-20"></div>

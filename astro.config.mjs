@@ -8,6 +8,13 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://kepul.id/",
   integrations: [mdx(), sitemap(), icon()],
+  i18n: {
+    defaultLocale: "id",
+    locales: ["en", "id"],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

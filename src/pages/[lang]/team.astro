@@ -4,17 +4,28 @@ import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
+import { useTranslations } from "@/i18n/utils";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "id" } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
 
 const publishedTeamMembers = (await getCollection("team", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 })).sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
-<Layout title="Team">
+<Layout title={t("team.title")} lang={lang}>
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Team</Fragment>
-      <Fragment slot="desc">Kami untuk #IndonesiaBebasSampah.</Fragment>
+      <Fragment slot="title">{t("team.title")}</Fragment>
+      <Fragment slot="desc">{t("team.description")}</Fragment>
     </Sectionhead>
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
       {

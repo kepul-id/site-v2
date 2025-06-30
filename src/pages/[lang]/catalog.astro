@@ -3,6 +3,17 @@ import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
+import { useTranslations } from "@/i18n/utils";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "id" } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
 
 const response = await fetch('https://api.kepul.id/v2/products?limit=100');
 const result = await response.json();
@@ -16,11 +27,11 @@ const productsByCategory = result.data.products.reduce((acc, product) => {
 }, {});
 ---
 
-<Layout title="Catalog">
+<Layout title={t("catalog.title")} lang={lang}>
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Catalog</Fragment>
-      <Fragment slot="desc">Daftar harga produk terkini.</Fragment>
+      <Fragment slot="title">{t("catalog.title")}</Fragment>
+      <Fragment slot="desc">{t("catalog.description")}</Fragment>
     </Sectionhead>
     <div class="mt-12">
       {Object.entries(productsByCategory).map(([category, products]) => (

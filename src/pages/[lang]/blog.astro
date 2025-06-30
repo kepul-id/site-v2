@@ -4,6 +4,17 @@ import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
+import { useTranslations } from "@/i18n/utils";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "id" } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {
@@ -16,12 +27,12 @@ publishedBlogEntries.sort(function (a, b) {
 });
 ---
 
-<Layout title="Blog">
+<Layout title={t("blog.title")}>
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Blog</Fragment>
+      <Fragment slot="title">{t("blog.title")}</Fragment>
       <Fragment slot="desc">
-        Baca berita dan tulisan terkini dari kami.
+        {t("blog.description")}
       </Fragment>
     </Sectionhead>
     <main class="mt-16">
@@ -30,7 +41,7 @@ publishedBlogEntries.sort(function (a, b) {
           publishedBlogEntries.length === 0 ? (
             <div class="p-8 md:px-20 md:py-40 mt-20 mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center relative overflow-hidden">
               <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-                Belum ada tulisan.
+                {t("blog.no_posts")}
               </span>
             </div>
           ) : (
