@@ -25,7 +25,7 @@ const makeTitle = title
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -50,9 +50,14 @@ const makeTitle = title
       }}
     />
   </head>
-  <body>
-    <Navbar />
-    <slot />
+  <body class="antialiased text-slate-800 bg-white">
+    <div class="fixed top-0 left-0 right-0 z-50">
+      <Navbar style={Astro.props.navbarStyle} />
+    </div>
+    <!-- Add padding top to account for fixed navbar only if not transparent/blended -->
+    <div class:list={[Astro.props.navbarStyle === "transparent" ? "" : "pt-20"]}> 
+        <slot />
+    </div>
     <Footer />
     <style is:global>
       /* Improve Page speed */

@@ -30,12 +30,29 @@ const steps = [
 ];
 ---
 
-<div class="mt-16 md:mt-0 pt-12">
-    <h2 class="text-4xl lg:text-4xl font-bold lg:tracking-tight">Jual Sampah Lebih Mudah!</h2>
-    <p class="text-slate-500 mt-2 leading-relaxed">Hanya dengan empat langkah, kamu dapat meraih keuntungan menjual sampah daur ulang.</p>
+<div class="mt-16 md:mt-24 pt-12 text-center">
+    <span class="text-primary font-bold tracking-wider uppercase text-sm bg-sky-100 px-3 py-1 rounded-full">Cara Kerja</span>
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-4 text-slate-800">Jual Sampah Lebih Mudah!</h2>
+    <p class="text-slate-500 mt-4 text-lg leading-relaxed max-w-2xl mx-auto">Hanya dengan empat langkah mudah, Anda sudah berpartisipasi dalam menjaga lingkungan.</p>
 </div>
   
-<div
-    class="grid grid-cols-2 md:grid-cols-4 gap-6 mx-auto mt-12">
-    {steps.map((item) => <StepCard step={item} />)}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-auto mt-16 px-4 md:px-0">
+    {steps.map((item, index) => (
+      <div class="relative flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+         {index < steps.length - 1 && (
+            <div class="hidden lg:block absolute top-12 -right-[10%] w-[20%] h-[2px] bg-gradient-to-r from-sky-100 to-transparent z-0"></div>
+         )}
+         
+         <div class="relative z-10 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-sky-200 mb-6 group-hover:scale-110 transition-transform">
+            {index + 1}
+         </div>
+         
+         <div class="w-full aspect-[4/3] mb-6 overflow-hidden rounded-xl bg-slate-50 flex items-center justify-center">
+            <img src={item.img} alt={item.step} class="w-3/4 h-auto object-contain group-hover:scale-105 transition-transform duration-500" />
+         </div>
+
+         <h3 class="text-xl font-bold text-slate-800 mb-3">{item.step}</h3>
+         <p class="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
 </div>

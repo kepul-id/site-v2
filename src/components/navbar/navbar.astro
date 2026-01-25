@@ -1,5 +1,4 @@
 ---
-import Container from "@/components/container.astro";
 import { Picture } from "astro:assets";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
@@ -28,62 +27,142 @@ const menuitems = [
   //   path: "https://app.kepul.id/beta",
   // },
 ];
+const { style = "default" } = Astro.props;
+const isTransparent = style === "transparent";
+
+// Base classes
+const containerClasses = "fixed top-0 w-full z-50 transition-all duration-300 border-b";
+
+// We'll use data-stuck attribute to switch styles
+// Default (Stuck/Not Transparent): White BG, Dark Text
+// Transparent (Top): Transparent BG, White Text (Desktop), Dark Text (Mobile Menu Items)
+
 ---
 
-<Container>
-  <header class="flex flex-col lg:flex-row justify-between items-center my-5">
-    <Astronav>
-      <div class="flex w-full lg:w-auto items-center justify-between">
-        <a href="/" class="w-8 md:w-12">
-          <Picture
-            src={kepulImage}
-            alt="Kepul"
-            widths={[40, 80, 120]}
-            sizes="(max-width: 120px) 40px, 80px"
-            loading="eager"
-            format="avif"
-            class="w-full h-auto"
-          />
-        </a>
-        <a href="/">
-          <span class="font-bold text-sky-500 ml-1 px-2 py-0.5 text-[20px]">Kepul</span>
-        </a>
-        <div class="block lg:hidden">
-          <MenuIcon class="w-4 h-4 text-gray-800" />
+<header 
+  id="main-navbar"
+  data-transparent={isTransparent}
+  data-stuck="false"
+  class:list={[
+    containerClasses,
+    // Default state (not transparent) -> Always white/stuck style
+    !isTransparent && "bg-white/80 backdrop-blur-md border-slate-200/50 shadow-sm",
+    // Transparent state -> Starts transparent, becomes white when stuck
+    isTransparent && "data-[stuck=false]:bg-transparent data-[stuck=false]:backdrop-blur-none data-[stuck=false]:border-transparent data-[stuck=true]:bg-white/90 data-[stuck=true]:backdrop-blur-md data-[stuck=true]:border-slate-200/50 data-[stuck=true]:shadow-sm"
+  ]}
+>
+  <div class="max-w-screen-xl mx-auto px-5">
+    <div 
+      id="navbar-inner"
+      class:list={[
+        "group flex flex-col lg:flex-row justify-between items-center transition-all duration-300",
+        isTransparent ? "data-[stuck=false]:py-4 data-[stuck=true]:py-2 py-2" : "py-2"
+      ]}>
+      <Astronav>
+        <div class="flex w-full lg:w-auto items-center justify-between">
+          <a href="/" class="flex items-center gap-2 group/logo">
+            <Picture
+              src={kepulImage}
+              alt="Kepul"
+              widths={[40, 80, 120]}
+              sizes="(max-width: 120px) 40px, 80px"
+              loading="eager"
+              format="avif"
+              class="w-8 md:w-10 h-auto group-hover/logo:scale-105 transition-transform"
+            />
+            <span class:list={[
+              "font-bold text-xl tracking-tight transition-colors",
+              !isTransparent && "text-slate-800",
+              // Transparent Mode:
+              // Default: text-white (Mobile & Desktop)
+              // Stuck: text-slate-800 (via group-data-[stuck=true])
+              isTransparent && "text-white group-data-[stuck=true]:text-slate-800"
+            ]}>Kepul</span>
+          </a>
+          <div class="block lg:hidden">
+             <!-- Mobile Menu Toggle -->
+             <MenuIcon class:list={[
+                "w-6 h-6 transition-colors",
+                !isTransparent && "text-slate-800",
+                // Mobile Icon: White by default, Dark when stuck
+                isTransparent && "text-white group-data-[stuck=true]:text-slate-800"
+             ]} />
+          </div>
         </div>
-      </div>
-      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
-        <ul class="flex flex-col lg:flex-row lg:gap-3">
-          {
-            menuitems.map((item, index) => (
-              <>
-                {item.children && (
-                  <Dropdown
-                    title={item.title}
-                    children={item.children}
-                    lastItem={index === menuitems.length - 1}
-                  />
-                )}
+        <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
+          <ul class="flex flex-col lg:flex-row lg:gap-1 bg-white lg:bg-transparent rounded-xl lg:rounded-none p-4 lg:p-0 shadow-lg lg:shadow-none border lg:border-none border-slate-100 mt-2 lg:mt-0">
+            {
+              menuitems.map((item, index) => (
+                <>
+                  {item.children && (
+                    <Dropdown
+                      title={item.title}
+                      children={item.children}
+                      lastItem={index === menuitems.length - 1}
+                    />
+                  )}
 
-                {!item.children && (
-                  <li>
-                    <a
-                      href={item.path}
-                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
-                      <span> {item.title}</span>
-                      {item.badge && (
-                        <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-blue-500 rounded-full">
-                          Beta
-                        </span>
-                      )}
-                    </a>
-                  </li>
-                )}
-              </>
-            ))
-          }
-        </ul>
-      </MenuItems>
-    </Astronav>
-  </header>
-</Container>
+                  {!item.children && (
+                    <li>
+                      <a
+                        href={item.path}
+                        class:list={[
+                           "flex lg:px-4 py-2 items-center font-medium transition-colors text-sm",
+                           // Default (Not Transparent)
+                           !isTransparent && "text-slate-600 hover:text-primary",
+                           // Transparent Logic
+                           // Mobile (inside white menu): Always dark (text-slate-600)
+                           // Desktop (lg): White when top, Dark when stuck
+                           isTransparent && "text-slate-600 lg:text-white lg:hover:text-white lg:group-data-[stuck=true]:text-slate-600 lg:group-data-[stuck=true]:hover:text-primary"
+                        ]}>
+                        <span> {item.title}</span>
+                        {item.badge && (
+                          <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-primary bg-primary/10 rounded-full">
+                            Beta
+                          </span>
+                        )}
+                      </a>
+                    </li>
+                  )}
+                </>
+              ))
+            }
+            <li>
+                <a href="https://play.google.com/store/apps/details?id=app.kepul.id&hl=id" class="lg:ml-4 px-5 py-2 rounded-full bg-primary hover:bg-sky-600 text-white font-medium text-sm transition-colors shadow-lg shadow-primary/20 block text-center mt-2 lg:mt-0 mb-4 lg:mb-0">
+                    Download App
+                </a>
+            </li>
+          </ul>
+        </MenuItems>
+      </Astronav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const navbar = document.getElementById("main-navbar");
+  const inner = document.getElementById("navbar-inner");
+  
+  function updateNavbar() {
+    if (!navbar) return;
+    const isStuck = window.scrollY > 20;
+    navbar.setAttribute("data-stuck", isStuck.toString());
+    
+    // Pass state to inner container if needed for padding transition
+    // (We handled padding via CSS selectors on the inner div directly relying on parent data attribute? 
+    // No, data attribute is on header, inner div needs to reference it? 
+    // Tailwind group-data is one way, or just put attribute on header and style inner based on parent.)
+    // Actually simpler: let's put the attribute on the header, and if we want to target children, use standard CSS nesting or global class.
+    // But wait, Astro `class:list` doesn't support complex parent selectors easily without `group` pattern.
+    // I added `data-[stuck=...]` directly to the `navbar-inner` div? No, I added it to class list conditional.
+    // Wait, the inner div class list logic I wrote above: `isTransparent ? "data-[stuck=false]:py-4 ...` relies on self attribute.
+    // So we should set attribute on inner too, or just select based on parent.
+    // Let's set it on both to be safe and simple.
+    inner?.setAttribute("data-stuck", isStuck.toString());
+  }
+
+  if (navbar && navbar.getAttribute("data-transparent") === "true") {
+      window.addEventListener("scroll", updateNavbar);
+      updateNavbar();
+  }
+</script>

@@ -6,14 +6,18 @@ import HowTo from "@/components/howto.astro";
 import Hero from "@/components/hero.astro";
 import Logos from "@/components/logos.astro";
 import Layout from "@/layouts/Layout.astro";
+import Stats from "@/components/stats.astro";
 ---
 
-<Layout title="">
+<Layout title="" navbarStyle="transparent">
   <Hero />
-  <Container>
-    <Features />
-    <HowTo />
-    <Logos />
-    <Cta />
-  </Container>
+  <div class="relative bg-white z-20 -mt-20 rounded-t-[3rem] pt-12 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.1)]">
+    <Container>
+      <Features />
+      <Stats />
+      <HowTo />
+      <Logos />
+      <Cta />
+    </Container>
+  </div>
 </Layout>
