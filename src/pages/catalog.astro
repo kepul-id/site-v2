@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
@@ -32,13 +32,12 @@ const productsByCategory = result.data.products.reduce((acc, product) => {
                 class="flex-none w-56 flex flex-col bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
               >
                 <div class="w-full aspect-square bg-slate-50 relative overflow-hidden">
-                  <Picture
+                  <Image
                     src={product.image_url}
                     width={400}
                     height={400}
-                    sizes="(max-width: 768px) 100vw, 50vw"
                     alt={product.name}
-                    class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                    class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
 
