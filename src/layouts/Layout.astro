@@ -58,7 +58,7 @@ const makeTitle = title
     <div class:list={[Astro.props.navbarStyle === "transparent" ? "" : "pt-20"]}> 
         <slot />
     </div>
-    <Footer />
+    {Astro.props.footer !== false && <Footer />}
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */

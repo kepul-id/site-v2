@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 import kepulIntro from "@/assets/intro.mp4";
 ---
 
-<main class="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden">
+<main class="fixed top-0 inset-x-0 w-full h-[95vh] flex items-center justify-center overflow-hidden z-0">
   <!-- Video Background -->
   <div class="absolute inset-0 w-full h-full">
     <video
@@ -50,12 +50,28 @@ import kepulIntro from "@/assets/intro.mp4";
           Download App
         </Link>
         <Link
-          href="#"
+          href="/submit"
           class="flex gap-2 items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-full font-semibold transition-all backdrop-blur-sm text-lg"
           rel="noopener">
-          Pelajari Lebih Lanjut
+          Jual Sampah via Web
         </Link>
       </div>
     </div>
   </div>
 </main>
+
+<script>
+  const hero = document.querySelector('main');
+  
+  if (hero) {
+    window.addEventListener('scroll', () => {
+      // Hide hero when scrolled past its height to prevent it from showing 
+      // underneath the white content during bottom-of-page overscroll bounces.
+      if (window.scrollY > window.innerHeight * 1.5) {
+        hero.style.visibility = 'hidden';
+      } else {
+        hero.style.visibility = 'visible';
+      }
+    });
+  }
+</script>

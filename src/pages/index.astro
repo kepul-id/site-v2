@@ -7,11 +7,12 @@ import Hero from "@/components/hero.astro";
 import Logos from "@/components/logos.astro";
 import Layout from "@/layouts/Layout.astro";
 import Stats from "@/components/stats.astro";
+import Footer from "@/components/footer.astro";
 ---
 
-<Layout title="" navbarStyle="transparent">
+<Layout title="" navbarStyle="transparent" footer={false}>
   <Hero />
-  <div class="relative bg-white z-20 -mt-20 rounded-t-[3rem] pt-12 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.1)]">
+  <div class="relative bg-white z-20 mt-[85vh] rounded-t-[3rem] pt-12 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.1)]">
     <Container>
       <Features />
       <Stats />
@@ -19,5 +20,8 @@ import Stats from "@/components/stats.astro";
       <Logos />
       <Cta />
     </Container>
+    <div class="px-5">
+      <Footer />
+    </div>
   </div>
 </Layout>
