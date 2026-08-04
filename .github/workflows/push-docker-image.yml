@@ -1,0 +1,53 @@
+name: Build and Push Web Image
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+env:
+  IMAGE: ghcr.io/kepul-id/kepul-web
+
+jobs:
+  build:
+    name: Build and push image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set image tag
+        id: vars
+        run: echo "tag=$(echo $GITHUB_SHA | head -c7)" >> $GITHUB_OUTPUT
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./build/Dockerfile
+          target: prod
+          push: true
+          tags: |
+            ${{ env.IMAGE }}:${{ steps.vars.outputs.tag }}
+            ${{ env.IMAGE }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Trigger infra deployment
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.INFRA_DISPATCH_TOKEN }}
+          repository: kepul-id/kepul-infra
+          event-type: deploy-prod
+          client-payload: '{"web_version": "${{ steps.vars.outputs.tag }}"}'

@@ -1,7 +1,8 @@
 ---
 // Fetch products for the selector
 import { Image } from "astro:assets";
-const response = await fetch('https://api.kepul.id/v2/products?limit=100');
+import { API_BASE_URL } from "@/utils/api.js";
+const response = await fetch(`${API_BASE_URL}/v2/products?limit=100`);
 const result = await response.json();
 const products = result.data.products;
 ---

@@ -3,11 +3,12 @@ import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 import ProductSelector from "@/components/submission/product-selector.astro";
+import { API_BASE_URL } from "@/utils/api.js";
 
 // Fetch regencies for dropdown
 let regencies = [];
 try {
-  const regencyResponse = await fetch('https://api.kepul.id/v2/pickup-regencies');
+  const regencyResponse = await fetch(`${API_BASE_URL}/v2/pickup-regencies`);
   const regencyResult = await regencyResponse.json();
   if (regencyResult.data && Array.isArray(regencyResult.data.order_pickup_regencies)) {
       regencies = regencyResult.data.order_pickup_regencies;
